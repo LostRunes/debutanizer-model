@@ -1,0 +1,10 @@
+[
+  "C4H8_campaign_anchor",
+  "Steam_Feed_Ratio",
+  "Reflux_Ratio",
+  "Reboiling_Steam_Flow_dev24h",
+  "Reflux_Flow_dev24h",
+  "Column_Bottom_Temp_dev24h",
+  "Control_Tray_Temp_dev24h",
+  "Column_Top_Pressure_dev24h"
+]

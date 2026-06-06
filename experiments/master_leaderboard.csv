@@ -1,0 +1,13 @@
+Model,Feature_Set,R2,MAE,Top_Feature
+CatBoost (Tuned),Pure Physics,-1.0154590366946583,0.28588267259417,Column_Bottom_Temp_roll_mean_12h (3.36)
+XGBoost (Default),Pure Physics,-0.9353331216428244,0.2912461832162528,Column_Bottom_Temp_Pnorm_k10 (0.290)
+LightGBM (Tuned),Pure Physics,-0.8299099620380299,0.2697587727548562,Feed_Flow_roll_mean_12h (243.00)
+Ensemble (0.5CB+0.3XG+0.2LG),Pure Physics,-0.9210028578742995,0.2809931443224645,N/A
+CatBoost (Tuned),No Temperature,-0.2547582173613072,0.238301619951256,Column_Top_Pressure_lag1 (8.67)
+CatBoost (Tuned),Process+Anchor,-0.18989177903742727,0.20684405525827365,C4H8_campaign_anchor (18.28)
+CatBoost (Tuned),Pure Physics,-0.7466203740790924,0.2690854656922246,Control_Tray_Temp_dev24h (2.84)
+XGBoost (Default),Pure Physics,-0.9353331216428244,0.2912461832162528,Column_Bottom_Temp_Pnorm_k10 (0.290)
+LightGBM (Tuned),Pure Physics,-0.8299099620380299,0.2697587727548562,Feed_Flow_roll_mean_12h (243.00)
+Ensemble (0.5CB+0.3XG+0.2LG),Pure Physics,-0.7915737021480913,0.27325692800037077,N/A
+CatBoost (Tuned),No Temperature,-0.19621409604775164,0.23309949204357175,Column_Top_Pressure_lag1 (6.86)
+CatBoost (Tuned),Process+Anchor,-0.29390493728588174,0.21646261265991143,C4H8_campaign_anchor (12.40)

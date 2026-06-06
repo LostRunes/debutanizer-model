@@ -1,0 +1,16 @@
+{
+    "best_cv_r2": -0.23226674112138737,
+    "test_r2": -0.8875930567088366,
+    "test_mae": 0.27833414619504937,
+    "best_params": {
+        "n_estimators": 192,
+        "learning_rate": 0.015491969867434468,
+        "max_depth": 7,
+        "num_leaves": 64,
+        "min_child_samples": 81,
+        "subsample": 0.6223515147965333,
+        "colsample_bytree": 0.749188691870062,
+        "reg_alpha": 0.00569656986362766,
+        "reg_lambda": 2.8418384817278137
+    }
+}

@@ -1,0 +1,21 @@
+Feature,Importance,Classification
+month_sin,7.7009,Suspicious (Time/Calendar proxy)
+Column_Bottom_Temp_roll_mean_12h,4.2017,Physics (Bottom Temp)
+Reboiler_Outlet_Temp_lag2,3.7068,Other Physics
+Feed_Flow_roll_mean_12h,2.9486,Other Physics
+Control_Tray_Temp_Pnorm_k10,2.6301,Other Physics
+month_cos,2.5931,Suspicious (Time/Calendar proxy)
+Control_Tray_Temp_dev24h,2.4011,Other Physics
+dow_sin,2.2549,Suspicious (Time/Calendar proxy)
+Control_Tray_Temp_Pratio,2.1674,Other Physics
+Reboiler_Delta,2.1119,Regime/Gradient Indicator
+Column_Bottom_Temp_Pratio,2.0443,Physics (Bottom Temp)
+Column_Bottom_Temp_roll_mean_3h,2.0191,Physics (Bottom Temp)
+Reboiler_Outlet_Temp_lag3,2.0052,Other Physics
+Column_Bottom_Temp_Pnorm_k10,1.9881,Physics (Bottom Temp)
+Reboiling_Steam_Flow_roll_mean_12h,1.9553,Physics (Steam)
+Pressure_x_TopTemp,1.8905,Physics (Pressure)
+Reflux_Flow_dev24h,1.5613,Physics (Reflux)
+dow_cos,1.5112,Suspicious (Time/Calendar proxy)
+Control_Tray_Temp_lag6,1.4284,Other Physics
+Reflux_Flow_roll_mean_12h,1.4256,Physics (Reflux)

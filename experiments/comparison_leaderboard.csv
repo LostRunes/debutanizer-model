@@ -1,0 +1,4 @@
+Model,R2,MAE
+CatBoost (Default),-0.814445303096087,0.2706553008679536
+LightGBM (Optimized),-0.8876,0.2783
+XGBoost (Default),-1.0674,0.2956

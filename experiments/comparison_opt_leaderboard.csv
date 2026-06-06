@@ -1,0 +1,4 @@
+Model,R2,MAE
+XGBoost (Pure Physics),-0.9353331216428244,0.2912461832162528
+"CatBoost (Default, No Month)",-0.9489,0.2803
+"CatBoost (Tuned, Pure Physics)",-0.6907750032677906,0.25814524894459756
