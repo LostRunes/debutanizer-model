@@ -4,7 +4,7 @@ This repository contains the machine learning soft-sensor pipeline and adaptive 
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 * **Objective**: Minimize C4 slippage (C4H8 & C4H6) in the C5+ bottom product stream (reducing variation from 0.8–1.5% down to a spec target of <0.5 mol%).
 * **Problem**: 
   * The physical analyzer has a 12-minute cycle time, introducing lag and wide variation.
@@ -13,7 +13,7 @@ This repository contains the machine learning soft-sensor pipeline and adaptive 
 
 ---
 
-## 🏗️ Solution Architecture
+##  Solution Architecture
 1. **Data Collection**: Retrieves column process parameters from Exaquantum and periodic laboratory/analyzer feedback data.
 2. **AI Soft Sensor**: 
    * **Model A (`C4H8_Bottom`)**: Gradient Boosting Regression (XGBoost/LightGBM/CatBoost) using mass/energy balance ratios, short-term rolling deviations, and a leakage-free calibration anchor.
@@ -22,7 +22,7 @@ This repository contains the machine learning soft-sensor pipeline and adaptive 
 
 ---
 
-## 📊 Process Details & Input Variables
+##  Process Details & Input Variables
 The debutanizer column separates mixed C4s (top product) from C5s and heavier components (bottom product). 
 * **Feed Location**: Feed enters the column on level control at the 17th tray.
 * **Reboiling Duty**: Provided via Low Pressure (desuperheater) steam.
@@ -35,7 +35,7 @@ The debutanizer column separates mixed C4s (top product) from C5s and heavier co
 
 ---
 
-## 🛠️ Feature Engineering & Drift Mitigation
+##  Feature Engineering & Drift Mitigation
 Standard models using absolute temperatures overfit to specific pressure regimes. When column pressure changed from **4.19 bar** to **3.98 bar** between campaigns, the boiling point of the mixture changed, reversing the temperature-to-concentration relationships.
 
 To mitigate this, the pipeline applies:
@@ -46,7 +46,7 @@ To mitigate this, the pipeline applies:
 
 ---
 
-## 📈 Model Performance Summary (Block 4 Test Set)
+##  Model Performance Summary (Block 4 Test Set)
 
 ### Model A (`C4H8_Bottom`) — Robust 8-Feature Configuration
 By training on Blocks 1-3 and testing on the held-out Block 4 dataset, the robust, anti-drift configuration achieved:
@@ -66,7 +66,7 @@ By training on Blocks 1-3 and testing on the held-out Block 4 dataset, the robus
 
 ---
 
-## 📂 Repository Structure
+##  Repository Structure
 ```
 ├── DEBUTANIZER-model/
 │   ├── data/                           # Data storage directory
@@ -90,7 +90,7 @@ By training on Blocks 1-3 and testing on the held-out Block 4 dataset, the robus
 
 ---
 
-## 🚀 Execution & Replication Pipeline
+##  Execution & Replication Pipeline
 
 Follow the execution sequence below to run the pipeline:
 
@@ -131,7 +131,7 @@ python inference/predict_total_c4.py
 
 ---
 
-## 🔮 Future Scope
+##  Future Scope
 * **Real-time Integration**: Deployment to production historians/DCS platforms such as Seeq.
 * **Closed-loop Control**: Integration with Advanced Process Control (APC) for automated reflux/steam manipulation.
 * **Scale-out**: Extending similar soft-sensor architectures to neighboring distillation systems.
