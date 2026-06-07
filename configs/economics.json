@@ -1,0 +1,15 @@
+{
+    "MODE": "spec",
+    "c4_value_per_wt_pct": 100.0,
+    "steam_cost_per_tph": 5.0,
+    "reflux_cost_per_tph": 1.0,
+    "spec_limit_total_c4_wt_pct": 0.50,
+    "hard_limit_bottom_temp_degC": 115.0,
+    "hard_limit_top_pressure_bar": 5.0,
+    "steam_min_tph": 18.0,
+    "steam_max_tph": 24.4,
+    "reflux_min_tph": 80.0,
+    "reflux_max_tph": 103.9,
+    "max_steam_change_tph": 2.0,
+    "max_reflux_change_tph": 10.0
+}
