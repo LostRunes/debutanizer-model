@@ -38,7 +38,7 @@ def predict_c4h6(latest_valid_analyzer: dict,
     if latest_valid_analyzer is not None:
         val = latest_valid_analyzer.get("value")
         hours_ago = latest_valid_analyzer.get("hours_ago")
-        if val is not None and hours_ago is not None and hours_ago <= 12 and hours_ago >= 1:
+        if val is not None and not (isinstance(val, float) and np.isnan(val)) and hours_ago is not None and hours_ago <= 12 and hours_ago >= 1:
             anchor_available = True
             anchor_value = float(val)
 
