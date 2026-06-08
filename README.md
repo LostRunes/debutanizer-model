@@ -4,7 +4,7 @@ This repository contains the production-ready machine learning soft-sensor pipel
 
 ---
 
-## 📌 Project Overview & Objectives
+##  Project Overview & Objectives
 
 *   **Objective**: Minimize C4 slippage (C4H8 & C4H6) in the C5+ bottom product stream, reducing variation from 0.8–1.5 wt% down to the product spec target of **<0.50 wt%**.
 *   **The Challenges**:
@@ -19,7 +19,7 @@ This repository contains the production-ready machine learning soft-sensor pipel
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 The advisory optimizer operates in a multi-stage process-aware loop, chaining surrogate process models with the frozen soft-sensors to generate physically realistic recommendations:
 
@@ -62,7 +62,7 @@ The advisory optimizer operates in a multi-stage process-aware loop, chaining su
 
 ---
 
-## 📊 Debutanizer Column Process & Variables
+##  Debutanizer Column Process & Variables
 
 The column separates mixed C4s (distillate) from C5+ components (bottom product). 
 
@@ -119,7 +119,7 @@ Model A is trained on Blocks 1-3 using the **Robust 8-Feature Configuration** (A
 
 ---
 
-## 🔮 Process-Aware Advisory Optimizer (Phase 5)
+##  Process-Aware Advisory Optimizer (Phase 5)
 
 Chains three CatBoost surrogate models to predict column response 1-hour ahead:
 *   **T1 (Bottom Temp)**: $R^2 = 0.764$, $\text{MAE} = \pm0.68^\circ\text{C}$ (Uses dev24h target to block drift).
@@ -141,7 +141,7 @@ Chains three CatBoost surrogate models to predict column response 1-hour ahead:
 
 ---
 
-## 💻 NiceGUI Operator Dashboard (Phase 6)
+##  NiceGUI Operator Dashboard (Phase 6)
 
 The web interface (`http://localhost:8080`) provides operators with a comprehensive control-room style display:
 *   **KPI Panel**: Color-coded tiles indicating Total C4, C4H8, C4H6, Steam, Reflux, and Column Health.
@@ -152,7 +152,7 @@ The web interface (`http://localhost:8080`) provides operators with a comprehens
 
 ---
 
-## 📂 Repository Structure
+##  Repository Structure
 
 ```
 ├── DEBUTANIZER-model/
@@ -195,7 +195,7 @@ The web interface (`http://localhost:8080`) provides operators with a comprehens
 
 ---
 
-## 🚀 Execution & Replication Pipeline
+##  Execution & Replication Pipeline
 
 Execute the pipeline using the following steps:
 
@@ -224,7 +224,7 @@ python debutanizer_dashboard/app.py
 
 ---
 
-## 🔮 Future Scope
+##  Future Scope
 
 1.  **Multi-Step Safety Horizon**: Extend surrogates to predict 2–4 hours ahead to identify thermal peaks.
 2.  **DCS closed-loop control**: Integrate recommendations directly into Advanced Process Control (APC) systems.
