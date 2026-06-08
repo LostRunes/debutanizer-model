@@ -1,0 +1,16 @@
+Feature,Importance
+Column_Top_Pressure_lag1,0.2947414941597228
+Column_Top_Pressure_dev24h,0.1082606893802757
+Feed_Flow,0.07713588573132991
+Column_Bottom_Temp_lag1,0.06775733583869915
+Reboiling_Steam_Flow_dev24h,0.06612330647813595
+Column_Bottom_Temp_dev24h,0.05458174849349053
+Reboiling_Steam_Flow,0.05436467531131485
+Control_Tray_Temp_dev24h,0.0450279961864493
+Reflux_Flow_dev24h,0.043757554202367446
+Reflux_Flow_lag1,0.038767165775766214
+Steam_Feed_Ratio,0.0372608257256404
+Reflux_Ratio,0.036423874223635445
+Control_Tray_Temp_lag1,0.02930595695531159
+Reflux_Flow,0.026362446086563036
+Reboiling_Steam_Flow_lag1,0.02012904545129781

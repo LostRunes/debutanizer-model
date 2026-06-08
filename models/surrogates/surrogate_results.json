@@ -1,0 +1,56 @@
+{
+    "bottom_temp": {
+        "naive": {
+            "r2": 0.7136800306734807,
+            "mae": 0.7300804421374261
+        },
+        "models": {},
+        "winner": {
+            "name": "CatBoost",
+            "r2": 0.7637577632417188,
+            "mae": 0.6799216178826802,
+            "threshold_passed": false,
+            "params": {
+                "iterations": 288,
+                "depth": 3,
+                "learning_rate": 0.024714999024031216
+            }
+        }
+    },
+    "tray_temp": {
+        "naive": {
+            "r2": 0.8978873064846129,
+            "mae": 1.887131071445783
+        },
+        "models": {},
+        "winner": {
+            "name": "CatBoost",
+            "r2": 0.907545556705521,
+            "mae": 1.9864443467248543,
+            "threshold_passed": true,
+            "params": {
+                "iterations": 101,
+                "depth": 6,
+                "learning_rate": 0.0590479104043017
+            }
+        }
+    },
+    "pressure": {
+        "naive": {
+            "r2": 0.9495444615570666,
+            "mae": 0.01251938207328282
+        },
+        "models": {},
+        "winner": {
+            "name": "CatBoost",
+            "r2": 0.9491409176046293,
+            "mae": 0.014771992106220162,
+            "threshold_passed": true,
+            "params": {
+                "iterations": 81,
+                "depth": 6,
+                "learning_rate": 0.018166269167207868
+            }
+        }
+    }
+}
