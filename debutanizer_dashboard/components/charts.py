@@ -7,15 +7,15 @@ Plotly chart components for trends, safety limits gauges, and feature importance
 import plotly.graph_objects as go
 from nicegui import ui
 
-def create_trend_chart(history_df, x_col="DateTime", y_col1="Total_C4", y_col2="Reboiling_Steam_Flow"):
+def build_trend_fig(history_df, x_col="DateTime", y_col1="Total_C4", y_col2="Reboiling_Steam_Flow"):
     """
-    Renders a Plotly dual-axis line trend chart.
+    Builds the Plotly Figure object for the trend chart.
     """
     if history_df is None or history_df.empty:
         fig = go.Figure()
         fig.add_annotation(text="No history data loaded", showarrow=False, font=dict(color="white"))
         fig.update_layout(template="plotly_dark", paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-        return ui.plotly(fig).classes('w-full h-80')
+        return fig
         
     fig = go.Figure()
     
@@ -62,7 +62,13 @@ def create_trend_chart(history_df, x_col="DateTime", y_col1="Total_C4", y_col2="
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         hovermode="x"
     )
-    
+    return fig
+
+def create_trend_chart(history_df, x_col="DateTime", y_col1="Total_C4", y_col2="Reboiling_Steam_Flow"):
+    """
+    Renders a Plotly dual-axis line trend chart.
+    """
+    fig = build_trend_fig(history_df, x_col, y_col1, y_col2)
     return ui.plotly(fig).classes('w-full h-80')
 
 def create_feature_importance_chart(imp_df, title="Feature Importances"):

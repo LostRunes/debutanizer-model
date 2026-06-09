@@ -42,17 +42,17 @@ def build_optimizer(on_state_change_callback):
             
         with ui.row().classes('items-center gap-2'):
             ui.label("Switch Mode:").classes('text-xs font-bold text-white')
-            mode_select = ui.select(
-                options={"spec": "Spec Mode (Minimize C4)", "economic": "Economic Mode (Minimize Cost)"},
-                value=state.config["MODE"]
-            ).classes('w-56 text-xs')
-            
+
             def on_mode_change(e):
-                state.config["MODE"] = mode_select.value
+                state.config["MODE"] = e.value
                 state.save_economics_config()
                 on_state_change_callback()
-                
-            mode_select.on('change', on_mode_change)
+
+            ui.select(
+                options={"spec": "Spec Mode (Minimize C4)", "economic": "Economic Mode (Minimize Cost)"},
+                value=state.config["MODE"],
+                on_change=on_mode_change
+            ).classes('w-56 text-xs text-white').props('dark')
 
     # UI Layout split
     with ui.row().classes('w-full gap-4 items-stretch'):
@@ -72,15 +72,21 @@ def build_optimizer(on_state_change_callback):
                 with ui.card().classes('grow bg-zinc-950/40 border border-zinc-800 rounded-xl p-4 shadow-md'):
                     ui.label("RECOMMENDED ADVISORY MOVE").classes('text-xs text-grey-5 font-bold uppercase tracking-wider')
                     if winner is None:
-                        ui.label("NO ACTION RECOMMENDED").classes('text-lg text-red-400 font-extrabold mt-2')
-                        ui.label("Safety bounds or C4 savings prevent moves.").classes('text-xs text-grey-5')
+                        ui.label("✓ STABLE OPERATION — NO MOVE NEEDED").classes('text-sm text-green-400 font-extrabold mt-2')
+                        ui.label("Current setpoints already satisfy the spec limit or no candidate improves C4 within safety buffers.").classes('text-xs text-grey-5 leading-normal mt-1')
+                        with ui.column().classes('gap-1 mt-3'):
+                            ui.label(f"Current Steam: {safe_num(snap['Reboiling_Steam_Flow'], '{:.1f}')} TPH").classes('text-sm text-white')
+                            ui.label(f"Current Reflux: {safe_num(snap['Reflux_Flow'], '{:.1f}')} TPH").classes('text-sm text-white')
+                            ui.label(f"Current Total C4: {safe_num(snap['current_total_c4'], '{:.4f}')} wt%").classes('text-sm text-grey-4')
                     else:
                         steam_change = winner["steam"] - snap["Reboiling_Steam_Flow"]
                         reflux_change = winner["reflux"] - snap["Reflux_Flow"]
                         with ui.column().classes('gap-2 mt-2'):
-                            ui.label(f"Steam Flow: {safe_num(winner['steam'], '{:.1f}')} TPH (Delta {steam_change:+.1f} TPH)").classes('text-md text-green-400 font-bold')
-                            ui.label(f"Reflux Flow: {safe_num(winner['reflux'], '{:.1f}')} TPH (Delta {reflux_change:+.1f} TPH)").classes('text-md text-green-400 font-bold')
+                            ui.label(f"Steam Flow: {safe_num(winner['steam'], '{:.1f}')} TPH (Δ {steam_change:+.1f} TPH)").classes('text-md text-green-400 font-bold')
+                            ui.label(f"Reflux Flow: {safe_num(winner['reflux'], '{:.1f}')} TPH (Δ {reflux_change:+.1f} TPH)").classes('text-md text-green-400 font-bold')
                             ui.label(f"Expected Total C4: {safe_num(winner['pred_total_c4'], '{:.4f}')} wt%").classes('text-md text-white font-bold')
+                            c4_red_pct = ((snap['current_total_c4'] - winner['pred_total_c4']) / snap['current_total_c4']) * 100 if snap['current_total_c4'] > 0 else 0
+                            ui.label(f"Expected C4 Reduction: {safe_num(c4_red_pct, '{:.1f}%')}").classes('text-sm text-blue-300 font-semibold')
                             
             # Safety Limits gauge block
             with ui.card().classes('w-full bg-zinc-950/40 border border-zinc-800 rounded-xl p-4 shadow-md'):

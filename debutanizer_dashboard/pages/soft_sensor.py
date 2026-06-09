@@ -10,8 +10,6 @@ import pandas as pd
 from services.state_service import state
 from services.prediction_service import run_live_prediction
 
-# We store local simulation inputs in a dict
-sim_inputs = {}
 
 def build_soft_sensor():
     
@@ -19,13 +17,13 @@ def build_soft_sensor():
     if snap is None:
         ui.label("Error: No snapshot loaded").classes('text-red-500')
         return
-        
-    # Initialize simulation inputs with current snapshot values
+
+    # Initialize simulation inputs fresh from the current snapshot each time the page loads
+    sim_inputs = {}
     for col in ["Feed_Flow", "Reboiling_Steam_Flow", "Reflux_Flow", "Column_Bottom_Temp", "Control_Tray_Temp", "Column_Top_Pressure"]:
-        if col not in sim_inputs:
-            sim_inputs[col] = snap[col]
-            
-    # Keep anchors fixed (representing current campaign baseline)
+        sim_inputs[col] = snap[col]
+
+    # Keep campaign anchors fixed (represent current campaign baseline)
     sim_inputs["c4h8_anchor"] = snap["c4h8_anchor"]
     sim_inputs["c4h6_anchor"] = snap["c4h6_anchor"]
 

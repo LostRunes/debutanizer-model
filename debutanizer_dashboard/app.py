@@ -59,6 +59,24 @@ body {
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
+/* Quasar select dropdown dark mode styling overrides */
+.q-field__native, .q-field__input {
+    color: #ffffff !important;
+}
+.q-field__append .q-icon {
+    color: #42A5F5 !important;
+}
+.q-menu {
+    background-color: #121214 !important;
+    border: 1px solid #1f1f23 !important;
+}
+.q-item {
+    color: #ffffff !important;
+}
+.q-item--active, .q-item.q-manual-focusable--focused {
+    background: rgba(13, 71, 161, 0.2) !important;
+    color: #42A5F5 !important;
+}
 """
 
 @ui.refreshable
