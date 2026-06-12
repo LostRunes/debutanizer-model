@@ -11,7 +11,8 @@ import numpy as np
 from services.state_service import state
 from services.dashboard_data import get_dashboard_data, safe_num
 from components.cards import safety_confidence_card
-from components.charts import create_safety_gauge
+from components.charts import create_safety_gauge, create_before_after_chart
+from services.optimizer_service import optimizer_service
 
 # MAE references
 MAE_BOTTOM_TEMP = 0.67992
@@ -142,3 +143,12 @@ def build_optimizer(on_state_change_callback):
             with ui.card().classes('w-full bg-zinc-900/10 border border-zinc-900 rounded-xl p-4 shadow-sm'):
                 ui.label("PHYSICAL DISCLAIMER").classes('text-[10px] text-orange-400 font-bold tracking-wider uppercase')
                 ui.label("Optimizer assumes C4H6 remains at its latest analyzer-estimated value because the validated Model B architecture contains no manipulable-variable response model.").classes('text-[11px] text-grey-5 leading-normal mt-1')
+
+    # 3. Optimization Benefit Timeline Comparison Graph
+    history = state.get_current_history()
+    if history is not None and not history.empty:
+        history_indices = list(history.index)
+        optimized_c4 = optimizer_service.run_optimizer_history(state, history_indices, state.config)
+        with ui.row().classes('w-full mt-4'):
+            with ui.card().classes('w-full bg-zinc-950/40 border border-zinc-800 rounded-xl p-4 shadow-md'):
+                create_before_after_chart(history, optimized_c4, state.config["spec_limit_total_c4_wt_pct"])

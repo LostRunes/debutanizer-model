@@ -85,7 +85,7 @@ def build_soft_sensor():
                 sim_inputs["Column_Top_Pressure"] = pres_input.value
                 
                 # Fetch history for deviations calculations. We will create a local copy and inject simulator values
-                hist = state.get_current_history().copy()
+                hist = state.get_prediction_window().copy()
                 # Overwrite last row with our simulated inputs
                 last_row_idx = hist.index[-1]
                 for col in ["Feed_Flow", "Reboiling_Steam_Flow", "Reflux_Flow", "Column_Bottom_Temp", "Control_Tray_Temp", "Column_Top_Pressure"]:

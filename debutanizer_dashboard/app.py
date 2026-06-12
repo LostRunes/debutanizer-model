@@ -22,6 +22,7 @@ from pages.optimizer import build_optimizer
 from pages.trends import build_trends
 from pages.diagnostics import build_diagnostics
 from pages.settings import build_settings
+from pages.model_analysis import build_model_analysis
 
 # NiceGUI Styling Configuration
 ui.colors(
@@ -92,6 +93,8 @@ def render_content():
         build_optimizer(render_content.refresh)
     elif active_page == "trends":
         build_trends(render_content.refresh)
+    elif active_page == "model_analysis":
+        build_model_analysis()
     elif active_page == "diagnostics":
         build_diagnostics()
     elif active_page == "settings":
@@ -128,6 +131,8 @@ with ui.left_drawer(value=True, fixed=True).classes('w-64 p-4 gap-6 column no-wr
                       on_click=lambda: set_active_page("optimizer")).classes(f'w-full justify-start text-sm py-2.5 {"nav-active" if active_page == "optimizer" else "text-grey-4"}')
             ui.button('Historical Trends', icon="show_chart", 
                       on_click=lambda: set_active_page("trends")).classes(f'w-full justify-start text-sm py-2.5 {"nav-active" if active_page == "trends" else "text-grey-4"}')
+            ui.button('Model Analysis', icon="model_training", 
+                      on_click=lambda: set_active_page("model_analysis")).classes(f'w-full justify-start text-sm py-2.5 {"nav-active" if active_page == "model_analysis" else "text-grey-4"}')
             ui.button('Diagnostics', icon="troubleshoot", 
                       on_click=lambda: set_active_page("diagnostics")).classes(f'w-full justify-start text-sm py-2.5 {"nav-active" if active_page == "diagnostics" else "text-grey-4"}')
             ui.button('Settings', icon="settings", 

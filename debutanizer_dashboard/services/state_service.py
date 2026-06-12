@@ -81,6 +81,18 @@ class GlobalState:
         if self.df is None or self.current_idx is None:
             return None
         row = self.df.loc[self.current_idx]
+        
+        c4h8_anchor_val = float(row["C4H8_campaign_anchor"])
+        c4h6_anchor_val = float(row["C4H6_campaign_anchor"])
+        if np.isnan(c4h8_anchor_val):
+            blk = self.df[self.df["Data_Block"] == row["Data_Block"]]
+            valid = blk.loc[:self.current_idx, "C4H8_Bottom"].dropna()
+            c4h8_anchor_val = float(valid.iloc[-1]) if not valid.empty else 0.35
+        if np.isnan(c4h6_anchor_val):
+            blk = self.df[self.df["Data_Block"] == row["Data_Block"]]
+            valid = blk.loc[:self.current_idx, "C4H6_Bottom"].dropna()
+            c4h6_anchor_val = float(valid.iloc[-1]) if not valid.empty else 0.004
+            
         return {
             "DateTime": str(row["DateTime"]),
             "Feed_Flow": float(row["Feed_Flow"]),
@@ -89,15 +101,25 @@ class GlobalState:
             "Column_Bottom_Temp": float(row["Column_Bottom_Temp"]),
             "Control_Tray_Temp": float(row["Control_Tray_Temp"]),
             "Column_Top_Pressure": float(row["Column_Top_Pressure"]),
-            "c4h8_anchor": float(row["C4H8_campaign_anchor"]),
-            "c4h6_anchor": float(row["C4H6_campaign_anchor"]),
+            "c4h8_anchor": c4h8_anchor_val,
+            "c4h6_anchor": c4h6_anchor_val,
             "current_total_c4": float(row["Total_C4"])
         }
         
-    def get_current_history(self):
+    def get_prediction_window(self):
+        """24-row model input window. Returns 24 rows leading up to current_idx."""
         if self.df is None or self.current_idx is None:
             return None
         start_idx = max(0, self.current_idx - 24)
+        return self.df.loc[start_idx:self.current_idx]
+
+    def get_trend_history(self, window_hours=720):
+        """Large block-scoped window for chart display."""
+        if self.df is None or self.current_idx is None:
+            return None
+        current_block = self.df.loc[self.current_idx, "Data_Block"]
+        block_start = self.df[self.df["Data_Block"] == current_block].index[0]
+        start_idx = max(block_start, self.current_idx - window_hours)
         return self.df.loc[start_idx:self.current_idx]
 
 # Single shared instance

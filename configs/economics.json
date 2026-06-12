@@ -1,5 +1,5 @@
 {
-    "MODE": "spec",
+    "MODE": "economic",
     "c4_value_per_wt_pct": 100.0,
     "steam_cost_per_tph": 5.0,
     "reflux_cost_per_tph": 1.0,
