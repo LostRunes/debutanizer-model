@@ -32,7 +32,7 @@ def get_dashboard_data():
     Aggregates all data required for rendering the dashboard UI.
     """
     snap = state.get_current_snapshot()
-    history = state.get_current_history()
+    history = state.get_prediction_window()
     
     if snap is None or history is None:
         return None

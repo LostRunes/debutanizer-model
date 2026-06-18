@@ -52,18 +52,18 @@ def build_overview(on_state_change_callback):
         with ui.row().classes('w-full items-center gap-4'):
             ui.label("Scrub Historian Timeline:").classes('text-white font-bold text-sm')
             
-            slider = ui.slider(
-                min=state.block4_indices[0], 
-                max=state.block4_indices[-1], 
-                value=state.current_idx
-            ).classes('grow')
-            
             def on_slider_change(e):
-                closest_idx = min(state.block4_indices, key=lambda x: abs(x - slider.value))
+                closest_idx = min(state.block4_indices, key=lambda x: abs(x - int(e.value)))
                 state.current_idx = closest_idx
                 on_state_change_callback()
-                
-            slider.on('change', on_slider_change)
+
+            slider = ui.slider(
+                min=state.block4_indices[0],
+                max=state.block4_indices[-1],
+                value=state.current_idx,
+                on_change=on_slider_change
+            ).classes('grow')
+
             ui.label(f"Index: {state.current_idx}").classes('text-grey-5 font-bold text-xs')
             
         # Timeline block markers

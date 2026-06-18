@@ -1,9 +1,9 @@
 {
-    "MODE": "spec",
+    "MODE": "economic",
     "c4_value_per_wt_pct": 100.0,
     "steam_cost_per_tph": 5.0,
     "reflux_cost_per_tph": 1.0,
-    "spec_limit_total_c4_wt_pct": 0.50,
+    "spec_limit_total_c4_wt_pct": 0.5,
     "hard_limit_bottom_temp_degC": 115.0,
     "hard_limit_top_pressure_bar": 5.0,
     "steam_min_tph": 18.0,
